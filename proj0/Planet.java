@@ -4,13 +4,13 @@ public class Planet {
     /**
     A body respect something in universe.
     */
-	double xxPos;
-	double yyPos;
-	double xxVel;
-	double yyVel;
-	double mass;
-	String imgFileName;
-    static double G = 6.67e-11;
+	public double xxPos;
+	public double yyPos;
+	public double xxVel;
+	public double yyVel;
+	public double mass;
+	public String imgFileName;
+    private double G = 6.67e-11;
 
     public Planet(double xxPos, double yyPos, double xxVel, double yyVel, double mass, String imgFileName){
         this.xxPos = xxPos;
