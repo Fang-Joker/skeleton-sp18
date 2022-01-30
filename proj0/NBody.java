@@ -2,7 +2,7 @@ public class NBody {
 	/**
 	The class was used to run the simulation of the moving of n planet. 
 	*/
-	static double radius;
+	static private double radius;
 	// return the radius of universe from a file named by filename
 	public static double readRadius(String fileName){
 		// Start reading in filename
@@ -75,7 +75,7 @@ public class NBody {
 		double[] xForces = new double[planets.length];
 		double[] yForces = new double[planets.length];
 
-		for (int t = 0; t < T; t += dt){
+		for (int t = 0; t <= T; t += dt){
 			// calculate netforce X and Y, storing these in the xForce and yForce arrays respectively
 			for (int i = 0; i < planets.length; i++) {
 				xForces[i] = planets[i].calcNetForceExertedByX(planets);
