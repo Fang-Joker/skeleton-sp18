@@ -27,7 +27,8 @@ public class NBody {
         // create a array of planet
         Planet[] nPlanet = new Planet[num]; 
 
-        // reading planet arguments and create the array objects of planet by class planet  
+        // reading planet arguments and create the array objects of planet by class planet 
+         
         for (int i = 0; i < num; i++){
         	// reading planet arguments
         	double xP = in.readDouble();
@@ -54,7 +55,8 @@ public class NBody {
 
 		/** Sets up the universe so it goes from 
 		  * -100, -100 up to 100, 100 */
-		StdDraw.setScale(-NBody.readRadius(filename), NBody.readRadius(filename));
+		radius = NBody.readRadius(filename);
+		StdDraw.setScale(-radius, radius);
 
 		/* Clears the drawing window. */
 		StdDraw.clear();
