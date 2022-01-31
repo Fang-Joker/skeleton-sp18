@@ -21,7 +21,9 @@ public class NBody {
         In in = new In(fileName);
 
         // read the number of planet
-        int num = in.readInt();
+        String x = in.readString();
+        int num = Integer.parseInt(x);
+        // int num = in.readInt();
         double radius = in.readDouble();
 
         // create a array of planet
