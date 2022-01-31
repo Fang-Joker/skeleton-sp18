@@ -9,7 +9,9 @@ public class NBody {
 		In in = new In(fileName);
 
 		// read the radius
-		int num = in.readInt();
+		String x = in.readString();
+        int num = Integer.parseInt(x);
+		//int num = in.readInt();
 		radius = in.readDouble();
 
 		return radius;
