@@ -78,7 +78,7 @@ public class Planet {
 		this.yyVel += dt * aY;
 		this.xxPos += dt * this.xxVel;
 		this.yyPos += dt * this.yyVel; 
-		StdOut.println(this.xxPos);
+		// StdOut.println(this.xxPos);
 	}
 
 	// Draw the planet 
