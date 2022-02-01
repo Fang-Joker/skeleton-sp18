@@ -14,6 +14,7 @@ public class NBody {
 		//int num = in.readInt();
 		radius = in.readDouble();
 
+		in.close();
 		return radius;
 	}
 
@@ -44,6 +45,7 @@ public class NBody {
         	nPlanet[i] = new Planet(xP, yP, xV, yV, mass, imgFileName);
         }
 
+        in.close();
         return nPlanet;
 	}
 
