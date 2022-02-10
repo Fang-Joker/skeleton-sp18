@@ -100,37 +100,48 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        IntList result, tmp, p, k;
+        IntList result, tmp, p, k ;
+        result = null;
+        tmp = null;
         // create result
-        result = new IntList(A.first, null);
-        k = result; //the change of result link
-        p = A.rest; //the change of A link
-        // copy the value of link A to link result
-        while (p != null) {
-            k.rest = new IntList(p.first, null);
-            k = k.rest;
-            p = p.rest;
+        if (A != null){
+            result = new IntList(A.first, null);
+            k = result; //the change of result link
+            p = A.rest; //the change of A link
+            // copy the value of link A to link result
+            while (p != null) {
+                k.rest = new IntList(p.first, null);
+                k = k.rest;
+                p = p.rest;
+            }
         }
 
-        tmp = new IntList(B.first, null);
-        k = tmp;
-        p = B.rest;
-        // copy the value of link B to link tmp
-        while (p != null) {
-            k.rest = new IntList(p.first, null);
-            k = k.rest;
-            p = p.rest;
+        if (B != null){
+            tmp = new IntList(B.first, null);
+            k = tmp;
+            p = B.rest;
+            // copy the value of link B to link tmp
+            while (p != null) {
+                k.rest = new IntList(p.first, null);
+                k = k.rest;
+                p = p.rest;
+            }
         }
 
         // link result and tmp
-        p = result;
-        while (p != null) {
-            if (p.rest == null){
-                p.rest = tmp;
-                break;
+        if (result == null){
+            result = tmp;
+        } else{
+            p = result;
+            while (p != null) {
+                if (p.rest == null){
+                    p.rest = tmp;
+                    break;
+                }
+                p = p.rest;
             }
-            p = p.rest;
         }
+
         return result;
     }
 
