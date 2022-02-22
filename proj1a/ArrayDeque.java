@@ -50,11 +50,11 @@ public class ArrayDeque<T> {
      * @param   x     The size changed of the deque. */
     public void resize(int x) {
         T[] a = (T[]) new Object[x];
-        if ( fPointer < lPointer) {
+        if (fPointer < lPointer) {
             System.arraycopy(items, fPointer, a, 0, size);
         } else {
             System.arraycopy(items, fPointer, a, 0, size - fPointer);
-            System.arraycopy(items, 0, a, size - fPointer, lPointer + 1 );
+            System.arraycopy(items, 0, a, size - fPointer, lPointer + 1);
         }
         items = a;
         fPointer = 0;
@@ -77,7 +77,7 @@ public class ArrayDeque<T> {
         } else {
             items[--fPointer] = item;
         }
-        size ++;
+        size++;
     }
 
     /**
@@ -90,13 +90,13 @@ public class ArrayDeque<T> {
         }
         if (size == 0) {
             items[lPointer] = item;
-        }else if (fPointer == items.length - 1) {
+        } else if (fPointer == items.length - 1) {
             fPointer = 0;
             items[fPointer] = item;
         } else {
             items[++lPointer] = item;
         }
-        size ++;
+        size++;
     }
 
     /**
@@ -105,7 +105,9 @@ public class ArrayDeque<T> {
      */
     public boolean isEmpty() {
         boolean mark = false;
-        if (size == 0) { mark = true; }
+        if (size == 0) {
+            mark = true;
+        }
         return mark;
     }
 
@@ -130,12 +132,12 @@ public class ArrayDeque<T> {
         if (size == 0) {
             removed = null;
         } else {
-            if (fPointer == items.length - 1 ) {
+            if (fPointer == items.length - 1) {
                 fPointer = 0;
             } else {
-                fPointer ++;
+                fPointer++;
             }
-            size --;
+            size--;
         }
 
         return removed;
@@ -157,15 +159,16 @@ public class ArrayDeque<T> {
             if (lPointer == 0) {
                 lPointer = items.length - 1;
             } else {
-                lPointer --;
+                lPointer--;
             }
-            size --;
+            size--;
         }
 
         return removed;
     }
 
     /** Test ArrayDeque. */
+    /**
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         System.out.println(a.isEmpty());
@@ -186,4 +189,5 @@ public class ArrayDeque<T> {
         }
         ArrayDeque<Integer> b = new ArrayDeque<>(a);
     }
+     */
 }
