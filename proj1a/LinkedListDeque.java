@@ -49,6 +49,20 @@ public class LinkedListDeque<T> {
         size++;
     }
 
+    /** Creates a deep copy of other.
+     * @param other The deque copied deeply
+     */
+    public LinkedListDeque(LinkedListDeque other) {
+        sentinel = new Node(null, null, null);
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
+        Node otherP = other.sentinel;
+        while (otherP.next != other.sentinel) {
+            otherP = otherP.next;
+            addLast(otherP.item);
+        }
+    }
+
     /**
      *  Adds an item of type T to the front of the deque.
      * @param   item    Item added of type T
@@ -154,6 +168,32 @@ public class LinkedListDeque<T> {
         return returned;
     }
 
+    /**
+     * Gets method by recursive way.
+     * @param   index   The given index for got item
+     * @return  T
+     */
+    public T getRecursive(int index) {
+        Node p = sentinel.next;
+        T returned;
+        if (size == 0 || index > size - 1 || index < 0) {
+            returned = null;
+        } else {
+            returned = getR(p, index);
+        }
+        return returned;
+    }
+
+    public T getR(Node I, int index) {
+        if (index == 0) {
+            return I.item;
+        } else {
+            return getR(I.next, --index);
+        }
+    }
+
+
+
     /**  Test (class)LinkedListDeque */
     public static void main(String[] args) {
         LinkedListDeque<Integer> l = new LinkedListDeque<>();
@@ -178,5 +218,14 @@ public class LinkedListDeque<T> {
         System.out.println(m.get(1));
         System.out.println(m.get(2));
         System.out.println(m.get(3));
+        System.out.println(m.getRecursive(-1));
+        System.out.println(m.getRecursive(0));
+        System.out.println(m.getRecursive(1));
+        System.out.println(m.getRecursive(2));
+        LinkedListDeque<Integer> a = new LinkedListDeque<>();
+        LinkedListDeque<Integer> b = new LinkedListDeque<>(1);
+        LinkedListDeque<Integer> c = new LinkedListDeque<>(a);
+        c = new LinkedListDeque<>(b);
+        c = new LinkedListDeque<>(m);
     }
 }

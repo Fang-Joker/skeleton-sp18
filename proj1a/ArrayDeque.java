@@ -167,8 +167,29 @@ public class ArrayDeque<T> {
         return removed;
     }
 
-    /** Test ArrayDeque. */
     /**
+     * Gets the item at the given index, where 0 is the front, 1st is the next item, and so forth.
+     * If no such item exists, returns null. Must not alter the deque!
+     * @param   index   The given index for got item
+     * @return  T
+     */
+    public T get(int index) {
+        T returned;
+        if (size == 0 || index > size - 1 || index < 0) {
+            returned = null;
+        } else if (fPointer < lPointer) {
+            returned = items[fPointer + index];
+        } else {
+            if (index <= items.length - fPointer - 1) {
+                returned = items[fPointer + index];
+            } else {
+                returned = items[fPointer + index - items.length];
+            }
+        }
+        return returned;
+    }
+
+    /** Test ArrayDeque. */
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         System.out.println(a.isEmpty());
@@ -188,6 +209,10 @@ public class ArrayDeque<T> {
             a.removeLast();
         }
         ArrayDeque<Integer> b = new ArrayDeque<>(a);
+        System.out.println(b.get(0));
+        System.out.println(b.get(3));
+        System.out.println(b.get(4));
+        System.out.println(b.get(-1));
+        System.out.println(b.get(20));
     }
-     */
 }
