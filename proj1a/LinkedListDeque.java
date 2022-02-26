@@ -26,7 +26,7 @@ public class LinkedListDeque<T> {
         private Node prev;
         private T item;
         private Node next;
-        public Node(Node p, T i, Node n) {
+        private Node(Node p, T i, Node n) {
             prev = p;
             item = i;
             next = n;
@@ -42,16 +42,19 @@ public class LinkedListDeque<T> {
 
     /** Instantiate the (class)LinkedListDeque with parameter item of class T.
      *  @param  item    Item input into LinkedListDeque */
+    /**
     public LinkedListDeque(T item) {
         sentinel = new Node(null, null, null);
         sentinel.next = new Node(sentinel, item, sentinel);
         sentinel.prev = sentinel.next;
         size++;
     }
+     */
 
     /** Creates a deep copy of other.
      * @param other The deque copied deeply
      */
+    /**
     public LinkedListDeque(LinkedListDeque other) {
         sentinel = new Node(null, null, null);
         sentinel.next = sentinel;
@@ -62,6 +65,7 @@ public class LinkedListDeque<T> {
             addLast(otherP.item);
         }
     }
+    */
 
     /**
      *  Adds an item of type T to the front of the deque.
@@ -114,6 +118,7 @@ public class LinkedListDeque<T> {
             removed = sentinel.next.item;
             sentinel.next = sentinel.next.next;
             sentinel.next.prev = sentinel;
+            size--;
         }
         return removed;
     }
@@ -129,6 +134,7 @@ public class LinkedListDeque<T> {
             removed = sentinel.prev.item;
             sentinel.prev = sentinel.prev.prev;
             sentinel.prev.next = sentinel;
+            size--;
         }
         return removed;
     }
@@ -184,7 +190,7 @@ public class LinkedListDeque<T> {
         return returned;
     }
 
-    public T getR(Node I, int index) {
+    private T getR(Node I, int index) {
         if (index == 0) {
             return I.item;
         } else {
@@ -197,7 +203,7 @@ public class LinkedListDeque<T> {
     /**  Test (class)LinkedListDeque */
     public static void main(String[] args) {
         LinkedListDeque<Integer> l = new LinkedListDeque<>();
-        LinkedListDeque<Integer> m = new LinkedListDeque<>(10);
+        LinkedListDeque<Integer> m = new LinkedListDeque<>();
         System.out.println("Is Deque l is empty? -->" + l.isEmpty());
         System.out.println("Is Deque m is empty? -->" + m.isEmpty());
         l.addFirst(10);
@@ -223,9 +229,9 @@ public class LinkedListDeque<T> {
         System.out.println(m.getRecursive(1));
         System.out.println(m.getRecursive(2));
         LinkedListDeque<Integer> a = new LinkedListDeque<>();
-        LinkedListDeque<Integer> b = new LinkedListDeque<>(1);
-        LinkedListDeque<Integer> c = new LinkedListDeque<>(a);
-        c = new LinkedListDeque<>(b);
-        c = new LinkedListDeque<>(m);
+        LinkedListDeque<Integer> b = new LinkedListDeque<>();
+        //LinkedListDeque<Integer> c = new LinkedListDeque<>(a);
+        //c = new LinkedListDeque<>(b);
+        //c = new LinkedListDeque<>(m);
     }
 }

@@ -38,6 +38,7 @@ public class ArrayDeque<T> {
     /** Creates a deep copy of other.
      * @param other The deque copied deeply
      */
+    /**
     public ArrayDeque(ArrayDeque other) {
         items = (T[]) new Object[other.items.length];
         System.arraycopy(other.items, 0, items, 0, other.items.length);
@@ -45,10 +46,11 @@ public class ArrayDeque<T> {
         fPointer = other.fPointer;
         lPointer = other.lPointer;
     }
+     */
 
     /** Resize the size of the box memory.
      * @param   x     The size changed of the deque. */
-    public void resize(int x) {
+    private void resize(int x) {
         T[] a = (T[]) new Object[x];
         if (fPointer < lPointer) {
             System.arraycopy(items, fPointer, a, 0, size);
@@ -189,30 +191,60 @@ public class ArrayDeque<T> {
         return returned;
     }
 
+    /**
+     * Prints the items in the deque from first to last, separated by a space.
+     * Once all in the items have been printed, print out a new line.
+     */
+    public void printDeque() {
+        int p = fPointer;
+        if (fPointer < lPointer) {
+            while (p < lPointer) {
+                System.out.print(get(p));
+                System.out.print(' ');
+                p++;
+            }
+            System.out.print(get(lPointer));
+        } else if (fPointer > lPointer) {
+            while (p < items.length) {
+                System.out.print(get(p));
+                System.out.print(' ');
+                p++;
+            }
+            p = 0;
+            while (p < lPointer) {
+                System.out.print(get(p));
+                System.out.print(' ');
+                p++;
+            }
+            System.out.print(get(lPointer));
+        }
+        System.out.println();
+    }
+
     /** Test ArrayDeque. */
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         System.out.println(a.isEmpty());
         System.out.println(a.size());
-        for (int i = 0; i < 10; i ++) {
+        for (int i = 0; i < 10; i++) {
             a.addLast(i);
         }
-        for (int i = 0; i < 10; i ++) {
+        for (int i = 0; i < 10; i++) {
             a.addFirst(i);
         }
-        for (int i = 0; i < 10; i ++) {
+        for (int i = 0; i < 10; i++) {
             a.addLast(i);
         }
         System.out.println(a.isEmpty());
         System.out.println(a.size());
-        for (int i = 0; i < 10; i ++) {
+        for (int i = 0; i < 10; i++) {
             a.removeLast();
         }
-        ArrayDeque<Integer> b = new ArrayDeque<>(a);
-        System.out.println(b.get(0));
-        System.out.println(b.get(3));
-        System.out.println(b.get(4));
-        System.out.println(b.get(-1));
-        System.out.println(b.get(20));
+        //ArrayDeque<Integer> b = new ArrayDeque<>(a);
+//        System.out.println(b.get(0));
+//        System.out.println(b.get(3));
+//        System.out.println(b.get(4));
+//        System.out.println(b.get(-1));
+//        System.out.println(b.get(20));
     }
 }
