@@ -134,7 +134,7 @@ public class ArrayDeque<T> {
         if (size == 0) {
             removed = null;
         } else {
-            removed = items[lPointer];
+            removed = items[fPointer];
             if (fPointer != lPointer) {
                 if (fPointer == items.length - 1) {
                     fPointer = 0;
@@ -228,20 +228,13 @@ public class ArrayDeque<T> {
     }
 
     /** Test ArrayDeque. */
-    /**
+
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
-        a.addFirst(0);
-        a.removeLast();
-        a.addFirst(2);
-        a.addFirst(3);
         a.isEmpty();
-        a.addFirst(5);
-        a.addFirst(6);
-        a.addFirst(7);
-        a.addFirst(8);
-        a.addFirst(9);
-        System.out.println(a.removeLast());
+        a.addFirst(1);
+        a.isEmpty();
+        a.addFirst(3);
+        System.out.println(a.removeFirst());
     }
-     */
 }
