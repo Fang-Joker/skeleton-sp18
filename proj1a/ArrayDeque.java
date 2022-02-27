@@ -92,9 +92,9 @@ public class ArrayDeque<T> {
         }
         if (size == 0) {
             items[lPointer] = item;
-        } else if (fPointer == items.length - 1) {
-            fPointer = 0;
-            items[fPointer] = item;
+        } else if (lPointer == items.length - 1) {
+            lPointer = 0;
+            items[lPointer] = item;
         } else {
             items[++lPointer] = item;
         }
@@ -231,10 +231,21 @@ public class ArrayDeque<T> {
 
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
-        a.isEmpty();
+        a.addLast(0);
         a.addFirst(1);
-        a.isEmpty();
-        a.addFirst(3);
+        a.removeFirst();
+        a.removeLast();
+        a.addLast(4);
+        a.addLast(5);
+        a.addLast(6);
+        a.removeFirst();
+        a.addLast(8);
+        a.addFirst(9);
+        a.addFirst(10);
+        a.addLast(11);
+        a.addFirst(12);
+        a.removeFirst();
+        System.out.println(a.get(4));
         System.out.println(a.removeFirst());
     }
 }
