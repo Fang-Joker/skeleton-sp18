@@ -228,6 +228,7 @@ public class ArrayDeque<T> {
     }
 
     /** Test ArrayDeque. */
+    /**
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         a.addFirst(0);
@@ -242,4 +243,5 @@ public class ArrayDeque<T> {
         a.addFirst(9);
         System.out.println(a.removeLast());
     }
+     */
 }
