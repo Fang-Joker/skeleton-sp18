@@ -130,14 +130,17 @@ public class ArrayDeque<T> {
         if (size == items.length / FACTOR && items.length > 8) {
             resize(items.length / FACTOR);
         }
-        T removed = items[fPointer];
+        T removed;
         if (size == 0) {
             removed = null;
         } else {
-            if (fPointer == items.length - 1) {
-                fPointer = 0;
-            } else {
-                fPointer++;
+            removed = items[lPointer];
+            if (fPointer != lPointer) {
+                if (fPointer == items.length - 1) {
+                    fPointer = 0;
+                } else {
+                    fPointer++;
+                }
             }
             size--;
         }
@@ -154,14 +157,17 @@ public class ArrayDeque<T> {
         if (size == items.length / FACTOR && items.length > 8) {
             resize(items.length / FACTOR);
         }
-        T removed = items[lPointer];
+        T removed;
         if (size == 0) {
             removed = null;
         } else {
-            if (lPointer == 0) {
-                lPointer = items.length - 1;
-            } else {
-                lPointer--;
+            removed = items[lPointer];
+            if (fPointer != lPointer) {
+                if (lPointer == 0) {
+                    lPointer = items.length - 1;
+                } else {
+                    lPointer--;
+                }
             }
             size--;
         }
@@ -224,27 +230,16 @@ public class ArrayDeque<T> {
     /** Test ArrayDeque. */
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
-        System.out.println(a.isEmpty());
-        System.out.println(a.size());
-        for (int i = 0; i < 10; i++) {
-            a.addLast(i);
-        }
-        for (int i = 0; i < 10; i++) {
-            a.addFirst(i);
-        }
-        for (int i = 0; i < 10; i++) {
-            a.addLast(i);
-        }
-        System.out.println(a.isEmpty());
-        System.out.println(a.size());
-        for (int i = 0; i < 10; i++) {
-            a.removeLast();
-        }
-        //ArrayDeque<Integer> b = new ArrayDeque<>(a);
-//        System.out.println(b.get(0));
-//        System.out.println(b.get(3));
-//        System.out.println(b.get(4));
-//        System.out.println(b.get(-1));
-//        System.out.println(b.get(20));
+        a.addFirst(0);
+        a.removeLast();
+        a.addFirst(2);
+        a.addFirst(3);
+        a.isEmpty();
+        a.addFirst(5);
+        a.addFirst(6);
+        a.addFirst(7);
+        a.addFirst(8);
+        a.addFirst(9);
+        System.out.println(a.removeLast());
     }
 }

@@ -22,7 +22,7 @@ public class LinkedListDeque<T> {
     private Node sentinel;
     private int size = 0;
 
-    public class Node {
+    private class Node {
         private Node prev;
         private T item;
         private Node next;
@@ -201,6 +201,7 @@ public class LinkedListDeque<T> {
 
 
     /**  Test (class)LinkedListDeque */
+    /**
     public static void main(String[] args) {
         LinkedListDeque<Integer> l = new LinkedListDeque<>();
         LinkedListDeque<Integer> m = new LinkedListDeque<>();
@@ -234,4 +235,5 @@ public class LinkedListDeque<T> {
         //c = new LinkedListDeque<>(b);
         //c = new LinkedListDeque<>(m);
     }
+     */
 }
