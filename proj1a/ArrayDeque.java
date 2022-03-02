@@ -55,8 +55,8 @@ public class ArrayDeque<T> {
         if (fPointer < lPointer) {
             System.arraycopy(items, fPointer, a, 0, size);
         } else {
-            System.arraycopy(items, fPointer, a, 0, size - fPointer);
-            System.arraycopy(items, 0, a, size - fPointer, lPointer + 1);
+            System.arraycopy(items, fPointer, a, 0, items.length - fPointer);
+            System.arraycopy(items, 0, a, items.length - fPointer, lPointer + 1);
         }
         items = a;
         fPointer = 0;
@@ -228,24 +228,23 @@ public class ArrayDeque<T> {
     }
 
     /** Test ArrayDeque. */
-
+    /**
     public static void main(String[] args) {
         ArrayDeque<Integer> a = new ArrayDeque<>();
         a.addLast(0);
-        a.addFirst(1);
-        a.removeFirst();
-        a.removeLast();
+        a.addLast(1);
+        a.addLast(3);
         a.addLast(4);
         a.addLast(5);
         a.addLast(6);
-        a.removeFirst();
-        a.addLast(8);
+        a.addFirst(7);
+        a.addFirst(8);
         a.addFirst(9);
         a.addFirst(10);
-        a.addLast(11);
-        a.addFirst(12);
-        a.removeFirst();
-        System.out.println(a.get(4));
-        System.out.println(a.removeFirst());
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
     }
+     */
 }
