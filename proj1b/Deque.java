@@ -52,7 +52,7 @@ public interface Deque<T> {
      * If no such item exists, return null.
      * @return T
      */
-    public T removeLast() ;
+    public T removeLast();
 
     /**
      * Gets the item at the given index, where 0 is the front, 1st is the next item, and so forth.
@@ -60,7 +60,7 @@ public interface Deque<T> {
      * @param   index   The given index for got item
      * @return  T
      */
-    public T get(int index) ;
+    public T get(int index);
 
     /**
      * Prints the items in the deque from first to last, separated by a space.
