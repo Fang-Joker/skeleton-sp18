@@ -1,6 +1,6 @@
 public class OffByN implements CharacterComparator {
 
-    static private int n;
+    private int n;
 
     /**
      * Initiate the class to set the num to off-by for two char.
