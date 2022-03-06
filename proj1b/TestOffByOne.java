@@ -7,12 +7,10 @@ public class TestOffByOne {
 
     @Test
     public void testEqualChars() {
-        char a = 'a';
-        char b = 'b';
-        char c = 'a';
-        assertEquals(a, a);
-        assertNotEquals(a, b);
-        assertEquals(a, c);
+        assertTrue(offByOne.equalChars('a', 'b'));
+        assertTrue(offByOne.equalChars('b', 'a'));
+        assertFalse(offByOne.equalChars('a', 'c'));
+        assertFalse(offByOne.equalChars('a', 'a'));
     }
 
 }
