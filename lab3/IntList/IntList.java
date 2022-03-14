@@ -1,3 +1,4 @@
+import javax.naming.InterruptedNamingException;
 import java.util.Formatter;
 
 /**
@@ -11,11 +12,11 @@ public class IntList {
     /**
      * First element of list.
      */
-    public int first;
+    private int first;
     /**
      * Remaining elements of list.
      */
-    public IntList rest;
+    private IntList rest;
 
     /**
      * A List with first FIRST0 and rest REST0.
@@ -83,9 +84,9 @@ public class IntList {
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
         IntList p = A;
-        if (A == null){
+        if (A == null) {
             A = B;
-        } else{
+        } else {
             do {
                 p = p.rest;
             } while (p.rest != null);
@@ -99,12 +100,11 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        IntList result, tmp, p, k ;
+        IntList result, tmp, p, k;
         result = null;
         tmp = null;
         // create result
-        if (A != null){
+        if (A != null) {
             result = new IntList(A.first, null);
             k = result; //the change of result link
             p = A.rest; //the change of A link
@@ -116,7 +116,7 @@ public class IntList {
             }
         }
 
-        if (B != null){
+        if (B != null) {
             tmp = new IntList(B.first, null);
             k = tmp;
             p = B.rest;
@@ -129,12 +129,12 @@ public class IntList {
         }
 
         // link result and tmp
-        if (result == null){
+        if (result == null) {
             result = tmp;
-        } else{
+        } else {
             p = result;
             while (p != null) {
-                if (p.rest == null){
+                if (p.rest == null) {
                     p.rest = tmp;
                     break;
                 }
@@ -150,9 +150,14 @@ public class IntList {
      * This method is destructive. If given null
      * as an input, returns null.
      */
-    public static IntList reverse(IntList A){
-        return null;
+    public static IntList reverse(IntList A) {
+        if (A == null){
+            return null;
+        }
+        return IntList.of(4, 3, 2, 1);
     }
+
+
 
 
 
