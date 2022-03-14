@@ -151,10 +151,16 @@ public class IntList {
      * as an input, returns null.
      */
     public static IntList reverse(IntList A) {
-        if (A == null){
-            return null;
+        IntList a = null;
+        IntList b = A;
+        while (b != null) {
+            IntList remainder = b.rest;
+            b.rest = a;
+            a = b;
+            b = remainder;
         }
-        return IntList.of(4, 3, 2, 1);
+        A = a;
+        return A;
     }
 
 
