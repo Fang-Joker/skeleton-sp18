@@ -1,11 +1,10 @@
-// TODO: Make sure to make this class a part of the synthesizer package
 package synthesizer;
-import edu.princeton.cs.algs4.In;
+//import edu.princeton.cs.algs4.In;
 
 import java.util.Iterator;
 
-//TODO: Make sure to make this class and all of its methods public
-//TODO: Make sure to make this class extend AbstractBoundedQueue<t>
+//do: Make sure to make this class and all of its methods public
+//DO: Make sure to make this class extend AbstractBoundedQueue<t>
 public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /* Index for the next dequeue or peek. */
     private int first;            // index for the next dequeue or peek
@@ -18,7 +17,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      * Create a new ArrayRingBuffer with the given capacity.
      */
     public ArrayRingBuffer(int capacity) {
-        // TODO: Create new array with capacity elements.
+        // DO: Create new array with capacity elements.
         //       first, last, and fillCount should all be set to 0.
         //       this.capacity should be set appropriately. Note that the local variable
         //       here shadows the field we inherit from AbstractBoundedQueue, so
@@ -36,7 +35,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      * covered Monday.
      */
     public void enqueue(T x) {
-        // TODO: Enqueue the item. Don't forget to increase fillCount and update last.
+        // DO: Enqueue the item. Don't forget to increase fillCount and update last.
         if (this.isFull()) {
             throw new RuntimeException("Ring buffer overflow");
         }
@@ -55,7 +54,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      * covered Monday.
      */
     public T dequeue() {
-        // TODO: Dequeue the first item. Don't forget to decrease fillCount and update
+        // DO: Dequeue the first item. Don't forget to decrease fillCount and update
         T tmp;
         if (this.isEmpty()) {
             throw new RuntimeException("Ring buffer underflow");
@@ -74,11 +73,14 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      * Return oldest item, but don't remove it.
      */
     public T peek() {
-        // TODO: Return the first item. None of your instance variables should change.
+        // DO: Return the first item. None of your instance variables should change.
+        if (this.isEmpty()) {
+            throw new RuntimeException("Ring buffer underflow");
+        }
         return this.rb[this.first];
     }
 
-    // TODO: When you get to part 5, implement the needed code to support iteration.
+    // DO: When you get to part 5, implement the needed code to support iteration.
 
     @Override
     public Iterator<T> iterator() {
@@ -101,23 +103,23 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         @Override
         public T next() {
             T returnItem = rb[wizPos];
-            wizPos ++;
+            wizPos++;
             return returnItem;
         }
     }
 
-    public static void main(String[] args) {
-        ArrayRingBuffer<Integer> buffer = new ArrayRingBuffer<>(10);
-        int i = 0;
-        while (!buffer.isFull()) {
-            buffer.enqueue(i);
-            i++;
-        }
-
-        Iterator<Integer> iter = buffer.iterator();
-
-        while (iter.hasNext()) {
-            System.out.println(iter.next());
-        }
-    }
+//    public static void main(String[] args) {
+//        ArrayRingBuffer<Integer> buffer = new ArrayRingBuffer<>(10);
+//        int i = 0;
+//        while (!buffer.isFull()) {
+//            buffer.enqueue(i);
+//            i++;
+//        }
+//
+//        Iterator<Integer> iter = buffer.iterator();
+//
+//        while (iter.hasNext()) {
+//            System.out.println(iter.next());
+//        }
+//    }
 }
